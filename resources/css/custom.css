@@ -1,0 +1,74 @@
+/* Brand Colors */
+:root {
+  --brand-primary: #2c5f2d;
+  --brand-secondary: #f4f1de;
+  --brand-accent: #e07a5f;
+}
+
+/* Global */
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--brand-secondary);
+  color: #333;
+}
+a { text-decoration: none; }
+h2 { color: var(--brand-primary); }
+
+/* Hero */
+.hero-slide {
+  height: 75vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.hero-slide .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(44, 95, 45, .5);
+}
+.hero-slide .carousel-caption {
+  bottom: 30%;
+}
+
+/* Categories */
+.category-card {
+  transition: transform .3s;
+}
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Product Cards */
+.card.product-card {
+  border: none;
+  transition: box-shadow .3s, transform .3s;
+}
+.card.product-card:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,.15);
+  transform: translateY(-5px);
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--brand-primary);
+  border: none;
+}
+.btn-primary:hover {
+  background: var(--brand-accent);
+}
+
+/* Testimonials */
+.testimonial {
+  background: white;
+  padding: 2rem;
+  border-radius: .5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,.1);
+}
+
+/* Footer */
+footer {
+  background: #222;
+  color: #eee;
+}
+footer a { color: #eee; }
+footer a:hover { color: var(--brand-accent); text-decoration: underline; }
