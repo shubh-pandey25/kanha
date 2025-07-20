@@ -1,74 +1,67 @@
-/* Brand Colors */
 :root {
-  --brand-primary: #2c5f2d;
-  --brand-secondary: #f4f1de;
-  --brand-accent: #e07a5f;
+  --primary: #2c5f2d;
+  --accent: #e07a5f;
+  --light: #f4f1de;
 }
 
-/* Global */
 body {
-  font-family: 'Nunito', sans-serif;
-  background: var(--brand-secondary);
+  background: var(--light);
   color: #333;
 }
-a { text-decoration: none; }
-h2 { color: var(--brand-primary); }
 
-/* Hero */
+/* Accent Button */
+.btn-accent {
+  background: var(--accent);
+  border: none;
+  color: #fff;
+}
+.btn-accent:hover {
+  background: #d66552;
+}
+
+/* Hero slides */
 .hero-slide {
-  height: 75vh;
+  position: relative;
+  height: 80vh;
   background-size: cover;
   background-position: center;
-  position: relative;
 }
 .hero-slide .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(44, 95, 45, .5);
-}
-.hero-slide .carousel-caption {
-  bottom: 30%;
+  background: rgba(0,0,0,0.5);
 }
 
-/* Categories */
-.category-card {
-  transition: transform .3s;
+/* Category hover effect */
+.category-card img {
+  transition: transform .3s ease;
 }
-.category-card:hover {
-  transform: translateY(-5px);
+.category-card:hover img {
+  transform: scale(1.05);
 }
-
-/* Product Cards */
-.card.product-card {
-  border: none;
-  transition: box-shadow .3s, transform .3s;
+.category-card .cat-overlay {
+  opacity: 0;
+  transition: opacity .3s ease;
 }
-.card.product-card:hover {
-  box-shadow: 0 8px 20px rgba(0,0,0,.15);
-  transform: translateY(-5px);
+.category-card:hover .cat-overlay {
+  opacity: 1;
 }
 
-/* Buttons */
-.btn-primary {
-  background: var(--brand-primary);
-  border: none;
+/* Product card quick-view */
+.product-card .btn-outline-secondary {
+  color: var(--primary);
+  border-color: var(--primary);
 }
-.btn-primary:hover {
-  background: var(--brand-accent);
+.product-card .btn-outline-secondary:hover {
+  background: var(--primary);
+  color: #fff;
 }
 
-/* Testimonials */
+/* Testimonial box */
 .testimonial {
-  background: white;
-  padding: 2rem;
+  max-width: 600px;
+  margin: auto;
+  background: #fff;
   border-radius: .5rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,.1);
+  box-shadow: 0 4px 20px rgba(0,0,0,.1);
 }
-
-/* Footer */
-footer {
-  background: #222;
-  color: #eee;
-}
-footer a { color: #eee; }
-footer a:hover { color: var(--brand-accent); text-decoration: underline; }

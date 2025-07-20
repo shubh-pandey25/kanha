@@ -1,39 +1,33 @@
-<footer class="bg-dark text-white py-5 mt-5">
+<footer class="py-5 mt-5 bg-dark text-white">
   <div class="container">
-
-    <div class="row">
-      <div class="col-md-4 mb-3">
+    <div class="row gy-4">
+      <div class="col-md-4">
         <h5>Kanha Creation</h5>
-        <p>Quality furniture crafted for your home.</p>
+        <p>Quality furniture, delivered to your door.</p>
       </div>
-
-      <div class="col-md-4 mb-3">
-        <h6>Quick Links</h6>
-        <ul class="list-unstyled">
-          <li>
-            <a href="{{ route('home') }}" class="text-white">Home</a>
-          </li>
-          <li>
-            <a href="{{ route('home') }}#products" class="text-white">Products</a>
-          </li>
-          <li>
-            <a href="#" class="text-white">Contact</a>
-          </li>
-        </ul>
+      <div class="col-md-4">
+        <h6>Newsletter</h6>
+        <form class="d-flex" action="#" method="POST">
+          <input type="email" class="form-control me-2" placeholder="Your email">
+          <button class="btn btn-accent">Subscribe</button>
+        </form>
       </div>
-
-      <div class="col-md-4 mb-3">
-        <h6>Contact Us</h6>
-        <p>
-          +91-XXXXXXXXXX<br>
-          info@kanhacreation.com
-        </p>
+      <div class="col-md-4">
+        <h6>Follow Us</h6>
+        <a href="#" class="text-white me-3">
+          <i class="bi bi-facebook fs-4"></i>
+        </a>
+        <a href="#" class="text-white me-3">
+          <i class="bi bi-instagram fs-4"></i>
+        </a>
+        <a href="#" class="text-white">
+          <i class="bi bi-twitter fs-4"></i>
+        </a>
       </div>
     </div>
-
-    <div class="text-center mt-3">
+    <hr class="bg-secondary my-4">
+    <div class="text-center small">
       &copy; {{ date('Y') }} Kanha Creation. All rights reserved.
     </div>
-
   </div>
 </footer>

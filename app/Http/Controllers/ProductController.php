@@ -19,30 +19,40 @@ class ProductController extends Controller
      * @return View
      */
     public function index(Request $request): View
-{
-    // 1) Get all categories for your “shop by category” dropdown
-    $categories = Category::all();
+    {
+        // 1) Fetch categories for navbar & category grid
+        $categories = Category::all();
 
-    // 2) Build products query
-    $query = Product::with('category');
+        // 2) Build the products query
+        $query = Product::with('category');
 
-    if ($cat = $request->query('category')) {
-        $query->where('category_id', $cat);
+        if ($catId = $request->query('category')) {
+            $query->where('category_id', $catId);
+        }
+        if ($search = $request->query('q')) {
+            $query->where('name', 'like', "%{$search}%");
+        }
+
+        // 3) Paginate with query string so filters persist
+        $products = $query->paginate(12)->withQueryString();
+
+        // 4) Define static testimonials for the slider
+        $testimonials = [
+            ['name' => 'Rohit S.', 'text' => 'Amazing quality and service!'],
+            ['name' => 'Priya M.',  'text' => 'My living room never looked better!'],
+            ['name' => 'Ankit P.',  'text' => 'Fast delivery and great prices.'],
+        ];
+
+        // 5) Pass everything into the index view
+        return view('products.index', compact(
+            'products',
+            'categories',
+            'testimonials'
+        ));
     }
-    if ($q = $request->query('q')) {
-        $query->where('name', 'like', "%{$q}%");
-    }
-
-    $products = $query->paginate(12)->withQueryString();
-
-    // 3) Pass both into the view
-    return view('products.index', compact('products','categories'));
-}
 
     /**
      * Show form to create a new product.
-     *
-     * @return View
      */
     public function create(): View
     {
@@ -52,9 +62,6 @@ class ProductController extends Controller
 
     /**
      * Validate and store a new product.
-     *
-     * @param  Request  $request
-     * @return RedirectResponse
      */
     public function store(Request $request): RedirectResponse
     {
@@ -80,9 +87,6 @@ class ProductController extends Controller
 
     /**
      * Show form to edit an existing product.
-     *
-     * @param  Product  $product
-     * @return View
      */
     public function edit(Product $product): View
     {
@@ -92,10 +96,6 @@ class ProductController extends Controller
 
     /**
      * Validate and update an existing product.
-     *
-     * @param  Request  $request
-     * @param  Product  $product
-     * @return RedirectResponse
      */
     public function update(Request $request, Product $product): RedirectResponse
     {
@@ -125,9 +125,6 @@ class ProductController extends Controller
 
     /**
      * Delete a product and its image.
-     *
-     * @param  Product  $product
-     * @return RedirectResponse
      */
     public function destroy(Product $product): RedirectResponse
     {
